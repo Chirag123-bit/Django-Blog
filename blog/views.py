@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import BlogModel
 from .forms import BlogModelForm
@@ -6,7 +6,15 @@ from .forms import BlogModelForm
 
 def home(request):
     blogs = BlogModel.objects.all()
-    form = BlogModelForm()
+    if request.method == "POST":
+        form = BlogModelForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit = False)
+            instance.user = request.user
+            instance.save()
+            return redirect("blog-index")
+    else:
+        form = BlogModelForm()
     context = {"blogs":blogs, "form":form}
     return render(request, "blog/index.html", context)
 

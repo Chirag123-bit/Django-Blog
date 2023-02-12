@@ -1,4 +1,6 @@
-{% extends 'partials/main.html' %} {% block main %}
+{% extends 'partials/main.html' %}
+{% load crispy_forms_tags %}
+{% block main %}
 
 <div class="container">
   <div class="row">
@@ -7,7 +9,7 @@
         <div class="card-body">
           <form method="post">
             {% csrf_token %}
-            {{form}}
+            {{form | crispy }}
             <input type="submit" value="Post" class="btn btn-dark btn-block">
           </form>
         </div>
