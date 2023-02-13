@@ -17,7 +17,3 @@ def home(request):
         form = BlogModelForm()
     context = {"blogs":blogs, "form":form}
     return render(request, "blog/index.html", context)
-
-def about(request):
-    return HttpResponse("About Page")
-
