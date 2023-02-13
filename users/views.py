@@ -1,10 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . form import Register
 
 # Create your views here.
 
 def register(request):
-    form = Register()
+    if request.method == "POST":
+        form = Register(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("blog-index")
+
+    else:
+        form = Register()
+
     context = {
         "form":form
     }
