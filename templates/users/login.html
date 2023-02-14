@@ -1,0 +1,21 @@
+{% extends 'partials/main.html' %} {% load crispy_forms_tags %}
+{% load static %} {% block main %}
+<link rel="stylesheet" href="{% static '/inputStyle.css' %}" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 m-auto">
+            <div class="card shadow my-3">
+                <div class="card-body">
+                    <form method="post">
+                        <h3 class="text-center">Login Form </h3>
+                        <hr />
+                        {% csrf_token %} {{form | crispy }}
+                        <input type="submit" value="Login" class="btn btn-dark btn-block" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}
