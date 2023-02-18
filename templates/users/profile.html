@@ -3,19 +3,53 @@
 <link rel="stylesheet" href="{% static '/inputStyle.css' %}" />
 <div class="container">
     <div class="row">
-        <div class="col-md-6 m-auto">
+        <div class="col-md-8 m-auto">
             <div class="card shadow my-3">
                 <div class="card-body">
+
+                    <span class="h3">Profile Page</span>
+                    <span class="float-right">
+                        <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#staticBackdrop">Edit
+                            Profile</a>
+                    </span>
+                    <hr>
+
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="default" alt="user profile image">
+                            <img src="{{user.profile.image.url}}" alt="user profile image" class="img-thumbnail" />
                         </div>
                         <div class="col-md-8">
-                            <h4>Name: {{user.username}}</h4>
-                            <h4>Email: {{user.email}}</h4>
+                            <h3>Name: {{user.username}}</h3>
+                            <h3>Email: {{user.email}}</h3>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+    Launch static backdrop modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
             </div>
         </div>
     </div>
