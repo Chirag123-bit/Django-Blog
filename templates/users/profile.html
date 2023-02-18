@@ -1,0 +1,24 @@
+{% extends 'partials/main.html' %} {% load crispy_forms_tags %}
+{% load static %} {% block main %}
+<link rel="stylesheet" href="{% static '/inputStyle.css' %}" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 m-auto">
+            <div class="card shadow my-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="default" alt="user profile image">
+                        </div>
+                        <div class="col-md-8">
+                            <h4>Name: {{user.username}}</h4>
+                            <h4>Email: {{user.email}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}
