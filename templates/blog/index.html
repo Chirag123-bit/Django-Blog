@@ -22,12 +22,12 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-4">
-              <img src="" alt="image" />
+              <img src="{{blog.user.profile.image.url}}" alt="image" class="img-fluid" />
             </div>
             <div class="col-md-8">
               <small>{{blog.created_at}}</small>
               <hr />
-              <a href="#" class="h3">{{blog.title}}</a>
+              <a href="{% url 'blog-detail' blog.id %}" class="h3">{{blog.title}}</a>
               <p class="text-justify">{{blog.content}}</p>
             </div>
           </div>

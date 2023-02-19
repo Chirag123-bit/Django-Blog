@@ -43,19 +43,17 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="" alt="User Image">
+                        <img src="{{user.profile.image.url}}" alt="User Image" class="img-fluid">
                     </div>
                     <div class="col-md-8">
                         <form method="post">
                             {% csrf_token %}
                             {{u_form|crispy}}
                             {{p_form|crispy}}
-
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Update</button>
                             </div>
-
                         </form>
                     </div>
                 </div>

@@ -17,6 +17,15 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ["username", "email"]
+
+    
+
+    def __init__(self, *args, **kwargs):
+        super(UserUpdateForm, self).__init__(*args, **kwargs)
+    
+        for fieldName in ["username", "email"]:
+            self.fields[fieldName].help_text = None
+
     
 
 

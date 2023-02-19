@@ -16,3 +16,11 @@ def home(request):
         form = BlogModelForm()
     context = {"blogs":blogs, "form":form}
     return render(request, "blog/index.html", context)
+
+
+def post_detail(request, id):
+    post = BlogModel.objects.get(id=id)
+    context={
+        "post":post
+    }
+    return render(request, "blog/detail.html", context)
