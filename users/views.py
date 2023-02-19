@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from . form import Register
+from . form import Register,UserUpdateForm,ProfileUpdateForm
+
 
 # Create your views here.
 
@@ -20,4 +21,11 @@ def register(request):
 
 
 def profile(request):
-    return render(request, "users/profile.html")
+    u_form = UserUpdateForm(instance=request.user)
+    p_form = ProfileUpdateForm(instance=request.user)
+
+    context={
+        "u_form":u_form,
+        "p_form":p_form
+    }
+    return render(request, "users/profile.html",context)
