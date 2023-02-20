@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import BlogModel
-from .forms import BlogModelForm
+from .forms import BlogModelForm,BlogUpdateForm
 
 
 def home(request):
@@ -24,3 +24,20 @@ def post_detail(request, id):
         "post":post
     }
     return render(request, "blog/detail.html", context)
+
+
+
+def post_edit(request, id):
+    post = BlogModel.objects.get(id=id)
+    if request.method=="POST":
+        form = BlogUpdateForm(request.POST,instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect("blog-detail", id=post.id)
+    else:
+        form = BlogUpdateForm(instance=post)
+    context={
+        "post":post,
+        "form":form
+    }
+    return render(request,"blog/edit.html", context)
