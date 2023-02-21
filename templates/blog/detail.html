@@ -1,7 +1,5 @@
-{% extends 'partials/main.html' %}
-{% load crispy_forms_tags %}
-{% load static %}
-{% block main %}
+{% extends 'partials/main.html' %} {% load crispy_forms_tags %}
+{% load static %} {% block main %}
 <link rel="stylesheet" href="{% static '/inputStyle.css' %}" />
 <div class="container">
     <div class="row">
@@ -10,29 +8,30 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="{{post.user.profile.image.url}}" alt="Author's Image" class="img-fluid">
+                            <img src="{{post.user.profile.image.url}}" alt="Author's Image" class="img-fluid" />
                         </div>
                         <div class="col-md-8">
                             <small>{{post.created_at}}</small>
+                            {% if request.user == post.user %}
                             <span class="float-right">
                                 <span><a href="{% url 'blog-edit' post.id %}"
                                         class="btn btn-sm btn-primary">Edit</a></span>
-                                <span><a href="#" class="btn btn-sm btn-danger">Delete</a></span>
+                                <span><a href="{% url 'blog-delete' post.id %}"
+                                        class="btn btn-sm btn-danger">Delete</a></span>
                             </span>
-                            <br>
+                            {% endif %}
+
+
+                            <br />
                             <small>{{post.user.username}}</small>
-                            <hr>
+                            <hr />
                             <h4>{{post.title}}</h4>
-                            <p>
-                                {{post.content}}
-                            </p>
+                            <p>{{post.content}}</p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 

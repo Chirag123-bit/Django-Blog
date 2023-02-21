@@ -1,0 +1,23 @@
+{% extends 'partials/main.html' %}
+{% load crispy_forms_tags %}
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 m-auto">
+            <div class="card shadow my-3">
+                <div class="card-body">
+                    <div class="alert alert-danger">
+                        Are You Sure?
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <a href="{% url 'blog-detail' post.id %}" class="btn btn-danger btn-sm">Cancle</a>
+                        <input type="submit" value="Confirm" class="btn btn-primary btn-sm">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock main %}
